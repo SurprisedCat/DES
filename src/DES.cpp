@@ -170,6 +170,8 @@ void DES::SetKey(char* _key,int _length)
   }
   //转成二进制
   Char2Bit(key,bkey,8);
+  for(int q=0;q<64;q++)
+	  cout<<bkey[q];
 };
 //
 //字符转成二进制

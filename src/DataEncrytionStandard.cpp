@@ -7,7 +7,8 @@
 
 #include "DataEncrytionStandard.h"
 
-=
+
+const int PC_1[64]=
 			  {57,  49,    41,   33,    25,    17,    9,
                1,   58,    50,   42,    34,    26,   18,
               10,    2,    59,   51,    43,    35,   27,
@@ -22,7 +23,32 @@ DataEncrytionStandard::DataEncrytionStandard() {
 	// TODO Auto-generated constructor stub
 
 }
+//设置密钥的内容，截取或补齐
+bool DataEncrytionStandard::SetKey(const char* _key)
+{
+	int lengthCout=0;
+	while(_key!='\0' && lengthCout<8)
+	{
+		this->key[lengthCout] = _key[lengthCout];//密码的长度只截取前面8位，不够的话用‘0’补齐。
+		lengthCout++;
+	}
+	return true;
+}
+bitset<64> DataEncrytionStandard::CharToBits(char _inChar[8])
+{
+	bitset<64> bits;
+	for(int i=0;i<8;i++)
+		for(int j=0;j<8;j++)
+			bits[(8-i)*8+j] = (_inChar[i]>>j)&1;
+	return bits;
+}
 
+vector<bitset<48> > DataEncrytionStandard::SubKeys()
+{
+	vector<bitset<48> >subkeys;
+	cout<<CharToBits(this->key);
+	return subkeys;
+}
 
 
 DataEncrytionStandard::~DataEncrytionStandard() {
