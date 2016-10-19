@@ -39,7 +39,7 @@ bitset<64> DataEncrytionStandard::CharToBits(char _inChar[8])
 	bitset<64> bits;
 	for(int i=0;i<8;i++)
 		for(int j=0;j<8;j++)
-			bits[(8-i)*8+j] = (_inChar[i]>>j)&1;
+			bits[(7-i)*8+j] = (_inChar[i]>>j)&1;
 	return bits;
 }
 

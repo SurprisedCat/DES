@@ -22,13 +22,23 @@
     > Personal Blog: http://songlee24.github.com
  ************************************************************************/
 
-
+#include <bitset>
 #include"des.h"
-using namespace std;
 #include <iostream>
+#include <string>
+#include "DataEncrytionStandard.h"
+using namespace std;
+
 int main()
 {
-    char msg[8]={'r','o','m','a','n','t','i','\0'};
+//	bitset test
+	DataEncrytionStandard des;
+	des.SetKey("12345678");
+	des.SubKeys();
+	cout<<endl;
+
+
+   /* char msg[8]={'r','o','m','a','n','t','i','\0'};
     char key[8]={'1'};
      cout<<"明文：";
      for (int i = 0; i < 8; i++)
@@ -52,7 +62,7 @@ int main()
      //输出解密后的明文
      des.OutPutDecipher();
      for(int i=0;i<8;i++)
-    	 cout<<std::hex<<(int)key[i];
+    	 cout<<std::hex<<(int)key[i];*/
      return 0;
 
 
