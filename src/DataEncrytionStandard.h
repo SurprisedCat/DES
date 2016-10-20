@@ -8,13 +8,15 @@
 #ifndef DATAENCRYTIONSTANDARD_H_
 #define DATAENCRYTIONSTANDARD_H_
 
-#include <bitset>
 #include <vector>
 #include <iostream>
-using std::bitset;
+#include <string>
+#include <array>
 using std::vector;
+using std::array;
 using std::cout;
 using std::endl;
+using std::string;
 
 class DataEncrytionStandard {
 public:
@@ -27,18 +29,18 @@ public:
 	//设置密码
 	bool SetKey(const char* _key);
 	//字符转换成二进制码
-	bitset<64> CharToBits(char _keyChar[8]);
+	array<bool,64> CharToBits(char _keyChar[8]);
 	//生成16轮密钥
-	vector<bitset<48> > SubKeys();
+	array<array<bool,48>,16> SubKeys();
 
 private:
 	  //密钥
 	  char key[8]={};
-	  bitset<64> keyInit[64];//????
+	  bool keyInit[64];//????
 	  //16个子密钥
 	  bool subkey[16][48];
 
-	  const static int PC_1[64];
+	  const static int PC_1[56];
 };
 
 #endif /* DATAENCRYTIONSTANDARD_H_ */
