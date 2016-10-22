@@ -31,11 +31,29 @@ using namespace std;
 
 int main()
 {
-//	bitset test
 	DataEncrytionStandard des;
 	des.SetKey("12345678");
-	des.SubKeys();
+	des.SetMsg("helloDES");
+	array<bool,64> cipher = des.Encryption();
+	for(int i=0;i<64;i++)
+		cout<<cipher[i];
 	cout<<endl;
+	cout<<des.msgCipher<<endl;
+
+	array<bool,64> decipher = des.Decryption();
+	for(int i=0;i<64;i++)
+		cout<<decipher[i];
+	cout<<endl;
+	for(int i=0;i<8;i++)
+		cout<<des.msgDecipher[i];
+
+	bool test = 1;
+	test = test<<7;
+	cout<<(int)test;//证明bool不支持移位
+
+	char testChar[8] = {'n','i','h','a','o','c','h','a'};
+	cout<<testChar<<endl;
+
 
 
    /* char msg[8]={'r','o','m','a','n','t','i','\0'};
@@ -63,6 +81,9 @@ int main()
      des.OutPutDecipher();
      for(int i=0;i<8;i++)
     	 cout<<std::hex<<(int)key[i];*/
+
+
+
      return 0;
 
 
